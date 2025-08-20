@@ -49,7 +49,7 @@ public class MyPropsRunner implements ApplicationRunner {
 
         logger.debug("VM Arguments = {}", args.containsOption("foo")); //false
         logger.debug("Program Arguments = {}", args.containsOption("bar")); //true
-
+        
         //Program Argument의 모든 이름을 출력하기
         for(String argName: args.getOptionNames()){
             System.out.println("아규먼트 이름 = " + argName);

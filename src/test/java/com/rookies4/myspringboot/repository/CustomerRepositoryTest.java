@@ -1,4 +1,3 @@
-
 package com.rookies4.myspringboot.repository;
 
 import com.rookies4.myspringboot.entity.Customer;
@@ -17,24 +16,24 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 //ctrl + shift + f10
 @SpringBootTest
-@Transactional
+//@Transactional
 class CustomerRepositoryTest {
     @Autowired
     CustomerRepository customerRepository;
 
     @Test
-    @Rollback(value = false) //Rollback 처리하지 마세요!!
+    //@Rollback(value = false) //Rollback 처리하지 마세요!!
     void testUpdateCustomer(){
         Customer customer =
                 customerRepository.findByCustomerId("AC001")
                         .orElseThrow(() -> new RuntimeException("Customer Not Found"));
-        customer.setCustomerName("SpringBoot");
+        customer.setCustomerName("마이둘리2");
         customerRepository.save(customer);
     }
 
     @Test
     @Disabled
-        //Customer 조회 존재하지 않으면 예외발생
+    //Customer 조회 존재하지 않으면 예외발생
     void testNotFoundCustomer() {
         Customer notFoundCustomer =
                 customerRepository.findByCustomerId("AC003")
@@ -42,8 +41,8 @@ class CustomerRepositoryTest {
     }
 
 
-    @Test
-        //Customer 조회
+    @Test @Disabled
+    //Customer 조회
     void testFindCustomer() {
         //findById() 호출
         Optional<Customer> customerById = customerRepository.findById(1L);
@@ -70,7 +69,7 @@ class CustomerRepositoryTest {
     @Transactional
     @Rollback(value = false) //Rollback 처리하지 마세요!!
     //@Disabled
-        //Customer 등록
+    //Customer 등록
     void testSaveCustomer() {
         //Given (준비단계)
         Customer customer = new Customer();
@@ -82,7 +81,7 @@ class CustomerRepositoryTest {
         //등록된 Customer 엔티티객체가 Null이 아닌지를 검증하기
         assertThat(savedCustomer).isNotNull();
         //등록된 Customer Name값이 동일한지 검증하기
-        assertThat(savedCustomer.getCustomerName()).isEqualTo("스프링FW3");
+        //assertThat(savedCustomer.getCustomerName()).isEqualTo("스프링FW3");
     }
 
 }

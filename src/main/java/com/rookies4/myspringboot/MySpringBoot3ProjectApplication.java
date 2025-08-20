@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Bean;
 //외부라이브러리에 대한 설정기능을 제공하는 AutoConfiguration을 활성화 해주는 역할. @EnableAutoConfiguration
 public class MySpringBoot3ProjectApplication {
 
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 
         //SpringApplication.run(MySpringBoot3ProjectApplication.class, args);
         SpringApplication application = new SpringApplication(MySpringBoot3ProjectApplication.class);

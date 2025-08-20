@@ -8,7 +8,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,7 +15,7 @@ import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/users")
+@RequestMapping("/api/users1")
 public class UserRestController {
     private final UserRepository userRepository;
 
@@ -34,15 +33,11 @@ public class UserRestController {
 
     //전체목록 조회
     @GetMapping
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public List<UserEntity> getUsers() {
         return userRepository.findAll();
     }
-
-
     //ID로 조회
     @GetMapping("/{id}")
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public UserEntity getUser(@PathVariable Long id){
         UserEntity existUser = getExistUser(id);
         return existUser;
